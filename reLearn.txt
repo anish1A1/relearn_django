@@ -1,0 +1,82 @@
+What i will be making in this project
+
+To relearn Django's monolithic patterns quickly, the best project to build is a Customer Relationship Management (CRM) or Employee Management System. This project forces you to use nearly every standard Django feature—Authentication, ModelForms, Class-Based Views (CBVs), and complex Database Relationships—without the overhead of a REST API. [1, 2] 
+Here is a plan to build an Employee/CRM System and the specific patterns you will master while doing so.
+## 1. The Core Project: Employee Management System
+This project involves managing employee records and their departmental associations. [2] 
+
+* 
+* Key Functionalities:
+* User Authentication: Register/Login system so only authorized users can manage records.
+   * Full CRUD Operations: Create, Read, Update, and Delete employee entries.
+   * Personalized Dashboards: A landing page with a greeting and a summary table of current records.
+   * Form Integration: Use ModelForm to automatically generate HTML forms from your database models.
+   * User Feedback: Implement Flash Messages to notify users when a record is successfully updated or deleted. [1, 2, 3, 4] 
+* 
+
+------------------------------
+## 2. Standard Patterns to Master
+Building this project will naturally teach you these essential Django patterns:
+
+* 
+* Model-View-Template (MVT): Understand how Django separates data handling (Model), business logic (View), and presentation (Template). [5, 6] 
+* Database Optimization:
+* Relationships: Practice implementing One-to-Many (Employee to Department) or Many-to-Many relationships.
+   * N+1 Query Resolution: Use select_related for ForeignKeys and prefetch_related for reverse or many-to-many relationships to keep your queries efficient. [7] 
+* Generic Class-Based Views (CBVs): Instead of writing every view by hand, use Django’s built-in ListView, DetailView, CreateView, UpdateView, and DeleteView to handle standard logic automatically. [2, 8] 
+* The Decorator Pattern: Use built-in view decorators like @login_required to secure specific parts of your application. [8] 
+* Signal (Observer) Pattern: Practice using Django Signals to perform automatic actions, like creating a user profile whenever a new User account is registered. [8] 
+* 
+
+------------------------------
+## 3. Quick-Start Order of Operations
+
+   1. Models & Forms: Define an Employee model with fields like name, email, and department. Link it to an EmployeeForm in forms.py using ModelForm.
+   2. Views: Create views for listing, adding, editing, and removing employees.
+   3. URLs: Map your views to specific paths (e.g., /list/, /add/, /update/<pk>/).
+   4. Templates: Build a base.html with common navigation (using Bootstrap 5 for styling) and specialized templates for each CRUD action. [2] 
+
+
+For an Employee Management System (EMS) using standard Django monolithic patterns, the project follows a Model-View-Template (MVT) workflow where the business logic is handled in the models and views, and the presentation is managed by templates. [1, 2] 
+## 1. Project Workflow (Step-by-Step)
+To build this monolithic application, you should follow this sequence:
+
+   1. Setup: Install Django, create your project, and a dedicated app named employees.
+   2. Define Models: Establish your database schema in models.py.
+   3. Migrations: Run makemigrations and migrate to create your database tables.
+   4. Create Forms: Use ModelForm in a new forms.py file to bridge models and HTML inputs.
+   5. Develop Views: Write functions or class-based views for each CRUD operation (List, Create, Update, Delete).
+   6. Configure URLs: Map your views to specific paths in your app's urls.py.
+   7. Design Templates: Create HTML files in a templates directory, utilizing Template Inheritance with a base.html for a consistent UI. [1, 3, 4, 5, 6] 
+
+## 2. Required Models & Relationships
+A robust EMS requires a relational database structure. Key models include:
+
+* 
+* Department: Stores organizational units (e.g., name, department head). [7] 
+* Employee: The central model, typically containing fields for:
+* Full Name, Email, and Contact Information.
+   * ForeignKey to the Department model.
+   * Salary or Role/Rank. [3, 7, 8] 
+* Leave/Vacation: Tracks employee time off with statuses like Pending, Approved, or Rejected. [7] 
+* 
+
+## 3. Authentication & Authorization
+Django's built-in authentication system handles both identifying users and determining their permissions. [9] 
+
+* 
+* Users: You can use the standard Django User model or a Custom User Model if you need unique identifiers like email instead of a username. [10] 
+* Role-Based Access:
+* Admin Dashboard: Restricted to superusers or managers to add, edit, and delete employee and department records.
+   * Employee Interface: Restricts regular users to viewing their own profiles, salary history, and leave applications. [7] 
+* Security Measures: Use built-in decorators like @login_required or generic view mixins to enforce private routes and role-based routing. [7, 9] 
+* 
+
+## 4. Key Patterns and Best Practices
+
+* 
+* Fat Models, Thin Views: Keep heavy business logic inside your models.py to ensure maintainability; views should primarily handle requests and template rendering.
+* Template Inheritance: Use {% extends 'base.html' %} and {% block content %} to avoid repeating UI elements like headers and footers across pages.
+* CRUD Operations: Map standard web actions directly to views (e.g., employee_list, create_employee, update_employee, delete_employee).
+* Crispy Forms: Integrate libraries like django-crispy-forms to automatically apply Bootstrap 5 styling to your ModelForm instances.
+* 
