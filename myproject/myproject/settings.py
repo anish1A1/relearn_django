@@ -134,3 +134,4 @@ MAILERS = {
 
 AUTH_USER_MODEL = 'authentications.CustomUser'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+LOGIN_REDIRECT_URL = 'home'

@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block title %}home Page{% endblock %}
+
+
+{% block content %}
+<h1>Welcome to Our Website</h1>
+ {% if user.is_authenticated %}
+        <p>Hello, <strong>{{ user.username }}</strong>! You are securely logged in.</p>
+        
+        <nav>
+            <a href="/">Go to Dashboard</a>
+        </nav>
+
+        <form action = "{% url 'logout' %}" method= "post"style="margin-top: 20px;">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>        
+        </form>
+ {% else %}
+
+        <p>Please log in or create an account to continue.</p>
+        
+        <nav>
+            <a href="{% url 'login' %}">Log In</a> | 
+            <a href="{% url 'register' %}">Sign Up</a>
+        </nav>
+
+ {% endif %}
+{% endblock %}
