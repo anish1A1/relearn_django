@@ -138,3 +138,14 @@ For a professional project, it is highly recommended to start with a Custom User
 * Database Choice: For development, SQLite is excellent due to its small footprint. For production, PostgreSQL is a common choice for enterprise-grade Django applications. [13, 14] 
 * Migrations: Always run python manage.py makemigrations and python manage.py migrate after defining these models to create the corresponding tables in your database. [13] 
 * 
+
+
+
+
+
+
+Email: alloozpat87@gmail.com
+Full name: Anish Jaiswal
+Password: anish123
+Password (again): anish123
+Superuser created successfully.

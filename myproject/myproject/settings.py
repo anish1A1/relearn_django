@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'myapp',
     'employee',
     'authentications',
+    'crispy_forms',
+    'crispy_bootstrap5'
     
 ]
 
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,3 +133,4 @@ MAILERS = {
 }
 
 AUTH_USER_MODEL = 'authentications.CustomUser'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
